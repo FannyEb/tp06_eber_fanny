@@ -1,0 +1,25 @@
+.leftItems {
+    position: absolute;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    max-height: 24px;
+}
+
+.margin{
+    margin-right: 2rem;
+}
+
+.margin-user{
+    margin-right: 0.5rem;
+}
+
+.max-width{
+    width: 100%;
+}

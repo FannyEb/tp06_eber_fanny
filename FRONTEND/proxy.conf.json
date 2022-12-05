@@ -1,0 +1,7 @@
+{
+    "/api":
+    {
+        "target": "https://met02-eber.onrender.com",
+        "secure": false
+    }
+}

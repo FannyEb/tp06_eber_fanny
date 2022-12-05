@@ -1,0 +1,15 @@
+@import "~angular-notifier/styles";
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+}
+
+.main-content{
+    margin: 2rem;
+}
+
+.card{
+    margin-top: 1rem;
+    width: fit-content;
+}
+

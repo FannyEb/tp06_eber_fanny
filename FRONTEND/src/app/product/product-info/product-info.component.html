@@ -1,0 +1,22 @@
+<div class="main-content" *ngIf="product">
+
+    <mat-card class="cardCatalogue" [routerLink]="[product.id]">
+        <mat-card-title class="cardTitleCatalogue">{{product.name}}</mat-card-title>
+        <img class="imgCatalogue" mat-card-image src="{{product.image}}" alt="product.description">
+        <mat-card-content>
+            <mat-chip-list>
+                <mat-chip>{{ product.category | productCategory}}</mat-chip>
+            </mat-chip-list>
+            <mat-divider></mat-divider>
+            <div>{{product.description}}</div>
+            <mat-divider></mat-divider>
+            <div class="content">
+                <p>{{product.price}}$</p>
+                <button mat-flat-button color="primary" (click)="addToShoppingList(product)">
+                    Ajouter au panier
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

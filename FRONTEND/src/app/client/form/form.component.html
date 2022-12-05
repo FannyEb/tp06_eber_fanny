@@ -1,0 +1,85 @@
+<div class="main-content" *ngIf="!showInfo">
+    <h1>Formulaire d'ajout de client</h1>
+    <div class="container">
+
+        <mat-card class="card">
+            <mat-card-title>Informations personnelles</mat-card-title>
+            <mat-card-content class="content">
+                <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                    <mat-label>Nom</mat-label>
+                    <input matInput appInputLetters placeholder="EBER" formControlName="lastName"
+                        [(ngModel)]="client.lastName" required>
+                </mat-form-field>
+                <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                    <mat-label>Prénom</mat-label>
+                    <input matInput appInputLetters placeholder="Fanny" formControlName="firstName" [(ngModel)]="client.firstName" required>
+                </mat-form-field>
+                <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                    <mat-label>Civilité</mat-label>
+                    <mat-select [(value)]="client.civility" formControlName="civility">
+                        <mat-option value="Madame">Madame</mat-option>
+                        <mat-option value="Monsieur">Monsieur</mat-option>
+                        <mat-option value="Autre">Autre</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-card-title>Contact</mat-card-title>
+            <mat-card-content class="content">
+                <div>
+                    <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                        <mat-label>Adresse</mat-label>
+                        <input formControlName="address" matInput placeholder="10 Rue de la Paix" [(ngModel)]="client.address" required>
+                    </mat-form-field>
+                    <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                        <mat-label>Code postal</mat-label>
+                        <input formControlName="postalCode" matInput appInputNumbers="5" placeholder="75000" [(ngModel)]="client.codeCity" required>
+                    </mat-form-field>
+                    <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                        <mat-label>Ville</mat-label>
+                        <input formControlName="city" matInput appInputLetters placeholder="Paris" [(ngModel)]="client.city" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                        <mat-label>Pays</mat-label>
+                        <input formControlName="country" matInput appInputLetters placeholder="France" [(ngModel)]="client.country" required>
+                    </mat-form-field>
+                    <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                        <mat-label>Adresse mail</mat-label>
+                        <input formControlName="email" matInput placeholder="name@exemple.com" [(ngModel)]="client.email" type="email">
+                    </mat-form-field>
+                    <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                        <mat-label>Numéro de téléphone</mat-label>
+                        <input formControlName="phoneNumber" matInput type="tel" appInputNumbers="18" placeholder="06 00 00 00 00"
+                            [(ngModel)]="client.phone" required>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-card-title>Informations de connection</mat-card-title>
+            <mat-card-content class="content">
+                <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                    <mat-label>Identifiant</mat-label>
+                    <input formControlName="login" matInput appInputLetters placeholder="login" [(ngModel)]="client.login" required>
+                </mat-form-field>
+                <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput formControlName="password" [type]="'password'" [(ngModel)]="client.password" required>
+                </mat-form-field>
+                <mat-form-field [formGroup]="clientForm" class="form-group" appearance="legacy">
+                    <mat-label>Confirmation mot de passe</mat-label>
+                    <input formControlName="confirmPassword" matInput [type]="'password'" [(ngModel)]="client.confirmPassword" required>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <div>
+            <button mat-raised-button color="primary" (click)="validate()">Valider</button>
+        </div>
+    </div>
+</div>
