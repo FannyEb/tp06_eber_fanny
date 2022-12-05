@@ -13,6 +13,13 @@ export class CatalogueService extends ServiceBase {
     super()
   }
 
+  search(search: string): Observable<Product[]> {
+    if(search === ''){
+      return this.getAll();
+    }
+    return this.http.get<Product[]>(this.apiUrl+"product/search/"+search)
+  }
+
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl+"product");
   }

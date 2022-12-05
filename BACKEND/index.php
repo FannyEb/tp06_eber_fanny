@@ -104,6 +104,21 @@ $app->get('/api/user', function (Request $request, Response $response, $args) {
 #endregion
 
 #region PRODUCTS
+//search product by name from ./mock/catalogue.json
+$app->get('/api/product/search/{name}', function (Request $request, Response $response, $args) {
+    $json = file_get_contents("./mock/catalogue.json");
+    $array = json_decode($json, true);
+    $name = $args ['name'];
+    $array = array_filter($array, function($item) use ($name) {
+        if (stripos($item['name'], $name) !== false) {
+            return true;
+        }
+        return false;
+    });
+    $response = addHeaders($response);
+    $response->getBody()->write(json_encode ($array));
+    return $response;
+});
 
 //get all product from ./mock/catalogue.json
 $app->get('/api/product', function (Request $request, Response $response, $args) {

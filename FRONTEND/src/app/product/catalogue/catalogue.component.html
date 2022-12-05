@@ -3,8 +3,8 @@
         <h2>Filtres</h2>
         <div class="search">
             <mat-form-field class="form-group" appearance="legacy">
-                <input matInput type="text" placeholder="Recherche" [(ngModel)]="filteredTerm"
-                    (keypress)="getProductFiltered()">
+                <input #search matInput type="text" placeholder="Recherche" [(ngModel)]="filteredTerm"
+                    >
                 <button type="submit"><i class="fa fa-search"></i></button>
             </mat-form-field>
         </div>
