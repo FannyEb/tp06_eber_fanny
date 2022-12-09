@@ -1,0 +1,58 @@
+.search mat-form-field {
+    position: relative;
+}
+
+.search mat-form-field button {
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    position: absolute;
+    background: transparent;
+    border: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    outline: 0;
+    color: white;
+}
+
+.search {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 2rem;
+}
+
+input {
+    font-size: initial;
+}
+
+p {
+    font-family: Lato;
+}
+.media {
+    margin: 10px;
+}
+
+li{
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+ul{
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e0e0e0;
+    border-radius: 5px;
+    padding: 0;
+}

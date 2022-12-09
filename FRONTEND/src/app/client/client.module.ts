@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { AngularMaterialModule } from '../angular-material.module';
+import { AngularMaterialModule } from '../module/angular-material.module';
 import { InputLettersDirective } from '../core/directive/input-letters/input-letters.directive';
 import { InputNumbersDirective } from '../core/directive/input-numbers/input-numbers.directive';
 import { PhoneNumberPipe } from '../core/pipe/phone-number/phone-number.pipe';

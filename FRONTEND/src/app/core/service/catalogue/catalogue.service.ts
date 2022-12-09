@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Product } from '../../model/product';
 import { ServiceBase } from '../service-base';
@@ -15,7 +16,7 @@ export class CatalogueService extends ServiceBase {
 
   search(search: string): Observable<Product[]> {
     if(search === ''){
-      return this.getAll();
+      return of([]);
     }
     return this.http.get<Product[]>(this.apiUrl+"product/search/"+search)
   }

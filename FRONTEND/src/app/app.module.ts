@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
-import { AngularMaterialModule } from './angular-material.module';
+import { AngularMaterialModule } from './module/angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientModule } from './client/client.module';
@@ -19,6 +19,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProductModule } from './product/product.module';
+import { SearchComponent } from './search/search.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -68,7 +69,8 @@ const customNotifierOptions: NotifierOptions = {
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

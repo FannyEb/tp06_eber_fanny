@@ -1,0 +1,15 @@
+<div class="search">
+    <mat-form-field class="form-group" appearance="legacy">
+        <input #input matInput type="text">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </mat-form-field>
+</div>
+
+<ul class="list-unstyled">
+    <li class="media" *ngFor="let product of model | async">
+        <a (click)="redirectDetails(product.id)">
+        <img [src]="product.image" class="mr-3" alt="product.name" />
+        {{ product.name }}
+        </a>
+    </li>
+</ul>

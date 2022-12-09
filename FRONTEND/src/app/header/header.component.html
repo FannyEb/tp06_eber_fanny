@@ -1,27 +1,34 @@
 <header>
     <mat-toolbar color="primary">
         <mat-toolbar-row>
-            <a [routerLink]="['']"><h1>TP5</h1></a>
+            <a [routerLink]="['']">
+                <h1>TP5</h1>
+            </a>
             <div *ngIf="username">
                 <a mat-button [routerLink]="['/client','add']"> Ajout client </a>
                 <a mat-button [routerLink]="['/client']"> Liste client </a>
                 <a mat-button [routerLink]="['/product','shopping']"> Catalogue </a>
             </div>
+            <app-search></app-search>
+
             <div class="leftItems">
                 <a *ngIf="username" class="margin" [routerLink]="['/product']">
-                    <mat-icon matBadge="{{numberProduct$ | async}}" matBadgeColor="warn" class="max-width material-symbols-outlined">shopping_bag</mat-icon>
+                    <mat-icon matBadge="{{numberProduct$ | async}}" matBadgeColor="warn"
+                        class="max-width material-symbols-outlined">shopping_bag</mat-icon>
                 </a>
-                <mat-icon *ngIf="!username" matBadge="{{numberProduct$ | async}}" matBadgeColor="warn" class="margin max-width material-symbols-outlined">shopping_bag</mat-icon>
+                <mat-icon *ngIf="!username" matBadge="{{numberProduct$ | async}}" matBadgeColor="warn"
+                    class="margin max-width material-symbols-outlined">shopping_bag</mat-icon>
                 <ng-container *ngIf="username; else noUsername">
                     <mat-icon class="margin-user material-symbols-outlined">account_circle</mat-icon>
                     <span class="margin-user">{{username}}</span>
-                    <mat-icon  class="margin-user material-symbols-outlined" (click)="logout()">logout</mat-icon>
+                    <mat-icon class="margin-user material-symbols-outlined" (click)="logout()">logout</mat-icon>
                 </ng-container>
                 <ng-template #noUsername>
-                    <mat-icon class="margin-user max-width material-symbols-outlined" [routerLink]="['/']">login</mat-icon>
+                    <mat-icon class="margin-user max-width material-symbols-outlined" [routerLink]="['/']">login
+                    </mat-icon>
                 </ng-template>
             </div>
-            
+
         </mat-toolbar-row>
     </mat-toolbar>
 </header>

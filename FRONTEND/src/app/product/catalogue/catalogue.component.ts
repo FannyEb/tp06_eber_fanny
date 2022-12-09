@@ -1,14 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { debounceTime, distinctUntilChanged, fromEvent, switchMap } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/internal/operators/map';
+import { AddProduct } from 'src/app/core/actions/shopping-actions';
 import { Product } from 'src/app/core/model/product';
 import { CatalogueService } from 'src/app/core/service/catalogue/catalogue.service';
 import { ProductCategory } from '../../core/model/product-category';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/internal/operators/map';
-import { Store } from '@ngxs/store';
-import { AddProduct } from 'src/app/core/actions/shopping-actions';
-import { catchError, debounceTime, distinctUntilChanged, fromEvent, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-catalogue',
@@ -23,28 +21,7 @@ export class CatalogueComponent implements OnInit {
   filteredCategories: Set<ProductCategory> = new Set;
   filteredTerm: string = '';
 
-  @ViewChild('search', { static: true })
-  input!: ElementRef;
-
-  searchField!: Observable<any>
-
   constructor(private catalogueService: CatalogueService, private store: Store) { }
-
-  ngAfterViewInit(): void {
-    this.searchField = fromEvent(this.input.nativeElement, 'keyup');
-    this.products = this.searchField.pipe(
-      map((event: any) => event.target.value),
-      debounceTime(500),
-      distinctUntilChanged(),
-
-      switchMap((search: string) => this.catalogueService.search(search).pipe(
-        catchError((error: any) => {
-          console.log(error);
-          return [];
-        })
-      ))
-    )
-  }
 
   ngOnInit(): void {
     this.products = this.catalogueService.getAll();
@@ -70,19 +47,16 @@ export class CatalogueComponent implements OnInit {
   }
 
   getProductFiltered(): void {
-    this.products = this.catalogueService.getAll().pipe(
+    this.products = this.catalogueService.search(this.filteredTerm).pipe(
       map((products: Product[]) => products.filter(product => {
         let predicate = true;
-        if (this.filteredTerm != '') {
-          predicate = product.name.toLowerCase().includes(this.filteredTerm.toLowerCase());
-        }
-        if (this.filteredCategories.size > 0 && predicate) {
+        if (this.filteredCategories.size > 0) {
           predicate = this.filteredCategories.has(product.category);
         }
         return predicate;
       }
       ))
-    );
+    )
   }
 
   addToShoppingList(product: Product): void {

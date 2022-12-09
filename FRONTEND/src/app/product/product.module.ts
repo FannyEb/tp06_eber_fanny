@@ -4,7 +4,7 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductCategoryPipe } from '../core/pipe/product-category/product-category.pipe';
 import { ChipActivateDirective } from '../core/directive/chip-activate/chip-activate.directive';
-import { AngularMaterialModule } from '../angular-material.module';
+import { AngularMaterialModule } from '../module/angular-material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductInfoComponent } from './product-info/product-info.component';

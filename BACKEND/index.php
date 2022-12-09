@@ -109,11 +109,9 @@ $app->get('/api/product/search/{name}', function (Request $request, Response $re
     $json = file_get_contents("./mock/catalogue.json");
     $array = json_decode($json, true);
     $name = $args ['name'];
+    //find all product which name contains $name
     $array = array_filter($array, function($item) use ($name) {
-        if (stripos($item['name'], $name) !== false) {
-            return true;
-        }
-        return false;
+        return stripos($item['name'], $name) !== false;
     });
     $response = addHeaders($response);
     $response->getBody()->write(json_encode ($array));
